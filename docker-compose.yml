@@ -3,7 +3,7 @@ version: "3.8"
 
 services:
 
-  ${DB_SERVICE}:
+  db:
     container_name: postgresql_db
     image: postgres
     restart: always
