@@ -19,8 +19,6 @@
 
 ## Installation
 
-I have used [anaconda](https://www.anaconda.com/products/individual) here as package manager\
-Commands for both are written as follows:
 ```bash
 # Step 1: cd into the repository root after cloning
 # rename .env.template to .env
