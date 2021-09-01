@@ -10,7 +10,7 @@ class Entry(Base):
     product_name = Column(VARCHAR(255))
     unit = Column(VARCHAR(45))
     geography_id = Column(Integer, ForeignKey('geography.id'))
-    impacts = relationship("Impact")
+    impact = relationship("Impact")
 
     def __repr__(self):
         return '<Entry %s>' % self.product_name

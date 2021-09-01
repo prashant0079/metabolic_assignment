@@ -10,7 +10,7 @@ class Geography(Base):
     country_id = Column(CHAR(36))
     short_name = Column(VARCHAR(100))
     name = Column(VARCHAR(255))
-    entries = relationship("Entry")
+    entry = relationship("Entry")
 
     def __repr__(self):
         return '<Geography %s>' % self.name

@@ -11,7 +11,7 @@ class Indicator(Base):
     category = Column(VARCHAR(100))
     indicator = Column(VARCHAR(100))
     unit = Column(VARCHAR(45))
-    impacts = relationship("Impact")
+    impact = relationship("Impact")
 
     def __repr__(self):
         return '<Indicator %s>' % self.indicator

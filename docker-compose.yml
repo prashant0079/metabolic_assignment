@@ -13,6 +13,8 @@ services:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=${DB_NAME}
+    volumes:
+      - rivm_db:/var/lib/postgresql/data
 
   pgadmin:
     container_name: pgadmin
@@ -36,3 +38,6 @@ services:
     depends_on:
       - db
     restart: always
+
+volumes:
+  rivm_db:
