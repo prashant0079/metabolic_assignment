@@ -133,3 +133,7 @@ dmypy.json
 
 # Pycharm
 .idea/
+
+# Alembic migrations
+migration/versions/
+
