@@ -1,6 +1,10 @@
 from pydantic import BaseModel
 from typing import List
 
+# The models used in this module are being used by the API
+# for type validation using Pydantic as FastAPI is reliant
+# on pydantic for Data validation
+
 
 class GeographySchema(BaseModel):
     id: int

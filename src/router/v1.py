@@ -10,6 +10,7 @@ from src.schema.models import IndicatorSchema, EntrySchema, \
     EntrySchemaExtended, ImpactSchemaExtended
 from src.const.api_const import *
 
+# Route /v1
 api_v1 = APIRouter()
 
 
@@ -19,6 +20,15 @@ api_v1 = APIRouter()
             description=API_INDICATORS_DESCRIPTION,
             tags=[API_INDICATOR_TAG])
 def indicators():
+    """Gets all the indicators based on RIVM 2016 dataset.
+
+    Raises
+    ------
+    HTTPException(HTTP_500_INTERNAL_SERVER_ERROR)
+    HTTPException(HTTP_404_NOT_FOUND)
+        If the query result is None.
+
+    """
     result = db.session.query(Indicator).all()
     if result is None:
         raise HTTPException(HTTP_404_NOT_FOUND)
@@ -32,6 +42,19 @@ def indicators():
             description=API_INDICATOR_DESCRIPTION,
             tags=[API_INDICATOR_TAG])
 def indicator_by_id(id: int):
+    """Gets all the indicators based on RIVM 2016 dataset.
+
+    Parameters
+    ----------
+    id : int
+
+    Raises
+    ------
+    HTTPException(HTTP_500_INTERNAL_SERVER_ERROR)
+    HTTPException(HTTP_404_NOT_FOUND)
+        If the query result is None.
+
+    """
     result = db.session.query(Indicator).filter(Indicator.id == id).first()
     if result is None:
         raise HTTPException(HTTP_404_NOT_FOUND)
@@ -46,6 +69,15 @@ def indicator_by_id(id: int):
             description=API_ENTRIES_DESCRIPTION,
             tags=[API_ENTRY_TAG])
 def entries():
+    """Gets all the entries from RIVM 2016 dataset.
+
+    Raises
+    ------
+    HTTPException(HTTP_500_INTERNAL_SERVER_ERROR)
+    HTTPException(HTTP_404_NOT_FOUND)
+        If the query result is None.
+
+    """
     result = db.session.query(Entry).all()
     if result is None:
         raise HTTPException(HTTP_404_NOT_FOUND)
@@ -59,6 +91,21 @@ def entries():
             description=API_ENTRY_DESCRIPTION,
             tags=[API_ENTRY_TAG])
 def entry_by_id(id: int):
+    """Get entry by specific id based on RIVM 2016 dataset.
+    The entry is based on entryschemaextended
+
+    Parameters
+    ----------
+    id : int
+
+    Raises
+    ------
+    HTTPException(HTTP_500_INTERNAL_SERVER_ERROR)
+        Backend Failure
+    HTTPException(HTTP_404_NOT_FOUND)
+        If the query result is None.
+
+    """
     result = db.session.query(Entry).filter(Entry.id == id).first()
     if result is None:
         raise HTTPException(HTTP_404_NOT_FOUND)
@@ -76,6 +123,22 @@ def entry_by_id(id: int):
             description=API_IMPACT_DESCRIPTION,
             tags=[API_IMPACT_TAG])
 def impact(entry_id: int, indicator_id: int):
+    """Gets impact based on entry_id and indicator_id RIVM 2016 dataset.
+
+    Parameters
+    ----------
+    entry_id : int
+
+    indicator_id : int
+
+    Raises
+    ------
+    HTTPException(HTTP_500_INTERNAL_SERVER_ERROR)
+        Backend Failure
+    HTTPException(HTTP_404_NOT_FOUND)
+        If the query result is None.
+
+    """
     try:
         result = db.session.query(Impact).filter(Impact.indicator_id == indicator_id,
                                                  Impact.entry_id == entry_id).first()

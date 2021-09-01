@@ -14,6 +14,9 @@ engine = create_engine(
     SQLALCHEMY_DATABASE_URL,
 )
 
+
+# Sqlalchemy session created with the help of create_engine
 Session = sessionmaker(bind=engine)
 
+# Used by all the models
 Base = declarative_base()
