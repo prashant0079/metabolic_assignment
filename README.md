@@ -63,6 +63,11 @@ $ docker-compose up
 ```
 * To access automatically generated swagger schema go to http://localhost:8000/docs
 
+```bash
+# To remove the project and volumes
+$ docker-compose down -v
+```
+
 ## Checklist
 - [x] Added Unit Tests
 - [x] docker-compose.yml file is fully fledged
