@@ -1,5 +1,3 @@
-import asyncio
-
 from src.database import Session
 from src.models.entry import Entry
 from src.models.geography import Geography
@@ -8,7 +6,7 @@ from src.models.indicator import Indicator
 
 
 class PrepareTables:
-    """A class containing all the async methods to add valid data
+    """A class containing all the methods to add valid data
      to the tables in the database. This class supports context manager
      and closes session at the exit of the context
 
@@ -25,15 +23,14 @@ class PrepareTables:
     def __enter__(self):
         return self
 
-    async def geography(self):
+    def geography(self):
         """Fills Geography data"""
         geography_nl = Geography(country_id="NL", short_name="NLD", name="The Netherlands")
         self.session.add(geography_nl)
         print("Adding Geography data")
         self.session.commit()
-        await asyncio.sleep(3)
 
-    async def entry(self):
+    def entry(self):
         """Fills Entry data"""
         entries = []
         for record in self.data:
@@ -49,9 +46,8 @@ class PrepareTables:
         self.session.add_all(entries)
         print("Adding Entries data")
         self.session.commit()
-        await asyncio.sleep(3)
 
-    async def indicator(self):
+    def indicator(self):
         """Fills indicator data"""
         indicators = []
         ignore_properties = ["Data source", "Ecoinvent process OR other names", "Unit", "Reference quantity", ""]
@@ -65,9 +61,8 @@ class PrepareTables:
         self.session.add_all(indicators)
         print("Adding Indicator data")
         self.session.commit()
-        await asyncio.sleep(3)
 
-    async def impact(self):
+    def impact(self):
         """Fills impact data"""
         impacts = []
         ignore_properties = ["Data source", "Ecoinvent process OR other names",
@@ -95,7 +90,6 @@ class PrepareTables:
         self.session.add_all(impacts)
         print("Adding Impact data")
         self.session.commit()
-        await asyncio.sleep(3)
 
     def __exit__(self, exc_type, exc_value, traceback):
         """Context manager exit method"""

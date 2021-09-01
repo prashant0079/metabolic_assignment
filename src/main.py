@@ -27,9 +27,9 @@ async def middleware(request: Request, call_next):
 
     request -> middleware -> actual api route -> response -> middleware -> modified response
 
-    :param request:
+    :param request: request to the API Server
     :param call_next: relay request from middleware to actual endpoint
-    :return response:
+    :return response: response from the API Server
     """
     start_time = datetime.utcnow()
 

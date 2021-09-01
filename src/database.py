@@ -10,13 +10,16 @@ load_dotenv(os.path.join(BASE_DIR, ".env"))
 
 SQLALCHEMY_DATABASE_URL = os.environ["DATABASE_URL"]
 
-engine = create_engine(
-    SQLALCHEMY_DATABASE_URL,
-)
+try:
+    engine = create_engine(
+        SQLALCHEMY_DATABASE_URL,
+    )
 
-
-# Sqlalchemy session created with the help of create_engine
-Session = sessionmaker(bind=engine)
+    # Sqlalchemy session created with the help of create_engine
+    Session = sessionmaker(bind=engine)
+except Exception as e:
+    print("Some issue while connecting to database")
+    print(f"Issue in detail:{e}")
 
 # Used by all the models
 Base = declarative_base()
