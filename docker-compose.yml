@@ -3,12 +3,12 @@ version: "3.8"
 
 services:
 
-  db:
+  ${DB_SERVICE}:
     container_name: postgresql_db
     image: postgres
     restart: always
     ports:
-      - 5432:5432
+      - ${DB_PORT}:${DB_PORT}
     environment:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
