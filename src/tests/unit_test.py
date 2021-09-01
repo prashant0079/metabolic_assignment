@@ -7,10 +7,6 @@ client = TestClient(api)
 
 class UnitTest(TestCase):
     def test_indicators(self):
-        """
-        
-        :return:
-        """
         response = client.get("/v1/indicator")
         assert response.status_code == 200
         assert len(response.json()) == 30

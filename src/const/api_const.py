@@ -1,3 +1,5 @@
+# Const variables used in the API
+
 API_TITLE = "RIVM 2016 Rest API Documentation"
 API_DESCRIPTION = "It is an API which serves data prepared from RIVM 2016 dataset"
 API_VERSION = "1.0.0"

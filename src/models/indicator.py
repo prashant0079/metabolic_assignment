@@ -4,6 +4,29 @@ from src.database import Base
 
 
 class Indicator(Base):
+    """
+    A class mapping to Entry table
+
+    ...
+    Attributes
+    ----------
+    id: int
+        primary key
+    method: str
+        method name
+    category: str
+        category name
+    indicator: str
+        indicator name
+    impact: relationship
+        relation of Indicator to the Impact table
+
+    Methods
+    -------
+    __repr__(self)
+        Representation of the Indicator object as a mapping to the actual record in the table
+
+    """
     __tablename__ = "indicator"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
