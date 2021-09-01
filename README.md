@@ -30,24 +30,29 @@ $ mv .env.template .env
 $ docker-compose build
 ```
 ```bash
-# Step 3 Run the microservice
+# Step 3 Run the microservice container
 $ docker-compose up
 ```
 ```bash
-# Step 4 Open another terminal 
+# Open another terminal
+# Step 4 Setup versions directory for alembic
+$ docker-compose run app mkdir migration/versions/
+```
+```bash
+# Step 5
 # Issue command to the app for setting up migrations
 $ docker-compose run app alembic revision --autogenerate -m "1st Schema Migration"
 ```
 ```bash
-# Step 5 Apply those migrations
+# Step 6 Apply those migrations
 $ docker-compose run app alembic upgrade head
 ```
 ```bash
-# Step 6 Add valid data to the tables 
+# Step 7 Add valid data to the tables 
 $ docker-compose run app python src/scripts/data_preparation.py
 ```
 ```bash
-# Step 7 Run the unit tests
+# Step 8 Run the unit tests
 $ docker-compose run app python -m unittest src/tests/unit_test.py
 ```
 
@@ -70,7 +75,7 @@ $ docker-compose down -v
 - [x] Added Unit Tests
 - [x] docker-compose.yml file is fully fledged
 - [x] PG-Admin for accessing and querying db
-- [x] Well documented Swagger Schema(OpenAPI)  
+- [x] Well documented Swagger Page(OpenAPI)  
 - [ ] To add async support as psycopg2 is sync
 - [ ] API Gateway
 - [ ] Logging
