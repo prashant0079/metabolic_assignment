@@ -55,7 +55,7 @@ def indicator_by_id(id: int):
         If the query result is None.
 
     """
-    result = db.session.query(Indicator).filter(Indicator.id == id).first()
+    result = db.session.query(Indicator).get(id)
     if result is None:
         raise HTTPException(HTTP_404_NOT_FOUND)
 
@@ -106,13 +106,12 @@ def entry_by_id(id: int):
         If the query result is None.
 
     """
-    result = db.session.query(Entry).filter(Entry.id == id).first()
+    result = db.session.query(Entry).get(1)
     if result is None:
         raise HTTPException(HTTP_404_NOT_FOUND)
 
     result_obj = result
-    result_obj.geography = db.session.query(Geography) \
-        .filter(Geography.id == result.geography_id).first().__dict__
+    result_obj.geography = db.session.query(Geography).get(result.geography_id).__dict__
     result_obj.impact = result.impact
     return result_obj
 
@@ -143,9 +142,9 @@ def impact(entry_id: int, indicator_id: int):
         result = db.session.query(Impact).filter(Impact.indicator_id == indicator_id,
                                                  Impact.entry_id == entry_id).first()
 
-        indicator = db.session.query(Indicator).filter(Indicator.id == indicator_id).first()
+        indicator = db.session.query(Indicator).get(indicator_id)
 
-        entry = db.session.query(Entry).filter(Entry.id == entry_id).first()
+        entry = db.session.query(Entry).get(entry_id)
         result_obj = {
             "id": result.id,
             "coefficient": result.coefficient,
