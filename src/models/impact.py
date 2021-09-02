@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, ForeignKey, VARCHAR, Float
-from src.database import Base
+from src.db.database import Base
 
 
 class Impact(Base):

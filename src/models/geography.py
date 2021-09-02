@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, VARCHAR
 from sqlalchemy.orm import relationship
-from src.database import Base
+from src.db.database import Base
 
 
 class Geography(Base):

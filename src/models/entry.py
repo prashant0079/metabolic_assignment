@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, ForeignKey, VARCHAR
 from sqlalchemy.orm import relationship
-from src.database import Base
+from src.db.database import Base
 
 
 class Entry(Base):
