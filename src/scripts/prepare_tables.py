@@ -1,4 +1,4 @@
-from src.database import Session
+from src.db.database import Session
 from src.models.entry import Entry
 from src.models.geography import Geography
 from src.models.impact import Impact
