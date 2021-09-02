@@ -16,7 +16,7 @@ config.set_main_option("sqlalchemy.url", os.environ["DATABASE_URL"])
 fileConfig(config.config_file_name)
 
 from src.models import *
-from src.database import Base
+from src.db.database import Base
 
 target_metadata = Base.metadata
 
