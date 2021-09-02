@@ -106,7 +106,7 @@ def entry_by_id(id: int):
         If the query result is None.
 
     """
-    result = db.session.query(Entry).get(1)
+    result = db.session.query(Entry).get(id)
     if result is None:
         raise HTTPException(HTTP_404_NOT_FOUND)
 
