@@ -14,7 +14,10 @@ services:
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=${DB_NAME}
     volumes:
-      - rivm_db:/var/lib/postgresql/data  
+      - rivm_db:/var/lib/postgresql/data
+    env_file:
+      - .env
+    command: -p ${DB_PORT}  
 
   pgadmin:
     container_name: pgadmin
